@@ -88,9 +88,22 @@ header {
 .software-experience {
     background: #F7fff7;
 }
-.software {
+/* .software {
     width: 600px;
     margin-top: 16px;
+} */
+.flex-soft {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    /* align-items: normal; */
+}
+.flex-soft-item {
+    display: flex;
+    /* justify-content: center; */
+    /* text-align: center; */
+    /* align-items: center; */
+    flex: 0 0 150px;
 }
 
 /* Work Experience
