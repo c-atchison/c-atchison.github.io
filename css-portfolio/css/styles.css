@@ -45,6 +45,7 @@ header {
 .flex-nav {
     display: flex;
     align-items: stretch;
+    flex-wrap: wrap;
 }
 .flex-nav-item {
     background: #2F3061;
@@ -77,6 +78,11 @@ header {
     color: #F7FFF7;
 }
 
+.summary {
+    background: #2F3061;
+    color: #F7FFF7;
+}
+
 /* Education
 -------------------------------*/
 .education {
@@ -88,21 +94,13 @@ header {
 .software-experience {
     background: #F7fff7;
 }
-/* .software {
-    width: 600px;
-    margin-top: 16px;
-} */
 .flex-soft {
     display: flex;
     flex-wrap: wrap;
     width: 40%;
-    /* align-items: normal; */
 }
 .flex-soft-item {
     display: flex;
-    /* justify-content: center; */
-    /* text-align: center; */
-    /* align-items: center; */
     flex: 0 0 150px;
 }
 
