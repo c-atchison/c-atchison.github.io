@@ -28,6 +28,10 @@ function displayPanels(btnName) {
             softwareSection.style.display = "block";
             employmentSection.style.display = "block";
             projectsSection.style.display = "block";
+            
+            // Back to Top
+            document.body.scrollTo({top: 0, behavior: 'smooth'});
+            document.documentElement.scrollTo({top: 0, behavior: 'smooth'});
             break;
         case 'eduBtn':
             // display edu section

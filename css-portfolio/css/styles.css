@@ -46,11 +46,13 @@ header {
     display: flex;
     align-items: stretch;
     flex-wrap: wrap;
+    position: sticky;
+    top: 0px;
 }
 .flex-nav-item {
-    background: #2F3061;
-    color: #F7FFF7;
-    border: 1px solid #F7FFF7;
+    background: #A1C6D7;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(0, 0, 0);
     padding: 10px;
     justify-content: center;
     text-align: center;
@@ -64,6 +66,7 @@ header {
     opacity: 80%;
 }
 .content-wrap {
+    max-width: 800px;
     width: 75%;
     margin: 0 auto;
     padding: 60px 0;
@@ -80,6 +83,12 @@ h3 {
 h3 + p {
     margin-top: 0;
 }
+.divider > section {
+    border-bottom: 1px solid #343434;
+}
+.divider > section:last-of-type {
+    border-bottom: none;
+}
 
 /* Profile
 -------------------------------*/
@@ -91,12 +100,21 @@ header {
 .summary {
     background: #2F3061;
     color: #F7FFF7;
+    background-image: url(../images/shahadat-rahman-BfrQnKBulYQ-unsplash.jpg);
+    background-size: cover;
+    background-position: top right;
 }
 
 /* Education
 -------------------------------*/
 .education {
-    background: #FFE66D;
+    background-image: url(../images/joanna-kosinska-unsplash.jpg);
+    background-size: cover;
+    background-position: top right;
+    padding-bottom: 100px;
+}
+.education h3, .education p {
+    width: 70%;
 }
 
 /* Software Experience
@@ -104,10 +122,13 @@ header {
 .software-experience {
     background: #F7fff7;
 }
+.soft-image {
+    align-self: baseline;
+}
 .flex-soft {
     display: flex;
     flex-wrap: wrap;
-    width: 40%;
+    width: 75%;
 }
 .flex-soft-item {
     display: flex;
