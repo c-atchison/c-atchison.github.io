@@ -2,6 +2,7 @@
 -------------------------------*/
 html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 *, *:before, *:after {
     box-sizing: inherit;
@@ -63,7 +64,9 @@ header {
     font-weight: bold;
 }
 .flex-nav-item:hover {
-    opacity: 80%;
+    background-color: goldenrod;
+    flex: 1 1 130px;
+    transition: all .3s;
 }
 .content-wrap {
     max-width: 800px;
@@ -133,6 +136,9 @@ header {
 .flex-soft-item {
     display: flex;
     flex: 0 0 150px;
+}
+#softBtn {
+    white-space: pre-wrap;
 }
 
 /* Work Experience

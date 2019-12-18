@@ -15,107 +15,34 @@ const contactsBtn = document.querySelector("#contactsBtn");
 function displayPanels(btnName) {
    switch(btnName) {
        case 'homeBtn':
-            // if home is clicked, open all sections
-            summarySection.classList.add("active");
-            educationSection.classList.add("active");
-            softwareSection.classList.add("active");
-            employmentSection.classList.add("active");
-            projectsSection.classList.add("active");
-
-            // and display the corresponding panel
-            summarySection.style.display = "block";
-            educationSection.style.display = "block";
-            softwareSection.style.display = "block";
-            employmentSection.style.display = "block";
-            projectsSection.style.display = "block";
-            
             // Back to Top
             document.body.scrollTo({top: 0, behavior: 'smooth'});
             document.documentElement.scrollTo({top: 0, behavior: 'smooth'});
             break;
         case 'eduBtn':
-            // display edu section
-            educationSection.classList.add("active");
-            educationSection.style.display = "block";
-            
-            // remove all other sections
-            summarySection.classList.remove("active");
-            summarySection.style.display = "none";
-
-            softwareSection.classList.remove("active");
-            employmentSection.classList.remove("active");
-            projectsSection.classList.remove("active");
-            
-            softwareSection.style.display = "none";
-            employmentSection.style.display = "none";
-            projectsSection.style.display = "none";
+            scrollToTargetAdjusted(educationSection);
             break;
         case 'softBtn':
-            // display software section
-            softwareSection.classList.add("active");
-            softwareSection.style.display = "block";
-            
-            // remove all other sections
-            summarySection.classList.remove("active");
-            summarySection.style.display = "none";
-
-            educationSection.classList.remove("active");
-            employmentSection.classList.remove("active");
-            projectsSection.classList.remove("active");
-            
-            educationSection.style.display = "none";
-            employmentSection.style.display = "none";
-            projectsSection.style.display = "none";
+            scrollToTargetAdjusted(softwareSection);
             break;
         case 'workBtn':
-            // display employment section
-            employmentSection.classList.add("active");
-            employmentSection.style.display = "block";
-
-            // remove all other sections
-            summarySection.classList.remove("active");
-            summarySection.style.display = "none";
-            
-            educationSection.classList.remove("active");
-            softwareSection.classList.remove("active");
-            projectsSection.classList.remove("active");
-            
-            educationSection.style.display = "none";
-            softwareSection.style.display = "none";
-            projectsSection.style.display = "none";
+            scrollToTargetAdjusted(employmentSection);
             break;
         case 'projBtn':
-            // display projects section
-            projectsSection.classList.add("active");
-            projectsSection.style.display = "block";
-
-            // remove all other sections
-            summarySection.classList.remove("active");
-            summarySection.style.display = "none";
-            
-            educationSection.classList.remove("active");
-            softwareSection.classList.remove("active");
-            employmentSection.classList.remove("active");
-            
-            educationSection.style.display = "none";
-            softwareSection.style.display = "none";
-            employmentSection.style.display = "none";
+            scrollToTargetAdjusted(projectsSection);
             break;
         default:
-            // same behavior as homeBtn
-            summarySection.classList.add("active");
-            educationSection.classList.add("active");
-            softwareSection.classList.add("active");
-            employmentSection.classList.add("active");
-            projectsSection.classList.add("active");
-
-            // and display the corresponding panel
-            summarySection.style.display = "block";
-            educationSection.style.display = "block";
-            softwareSection.style.display = "block";
-            employmentSection.style.display = "block";
-            projectsSection.style.display = "block";
+            // Back to Top
+            document.body.scrollTo({top: 0, behavior: 'smooth'});
+            document.documentElement.scrollTo({top: 0, behavior: 'smooth'});
     }
+}
+function scrollToTargetAdjusted(element){
+    var headerOffset = 60;
+    var elementPosition = element.offsetTop;
+    var offsetPosition = elementPosition - headerOffset;
+    document.documentElement.scrollTop = offsetPosition;
+    document.body.scrollTop = offsetPosition; // For Safari
 }
 
 homeBtn.addEventListener("click",  () => { displayPanels("homeBtn"); }, false);
