@@ -128,34 +128,59 @@ function fillOtherAnswers() {
 }
 
 function isCorrect(clickedAnswer) {
-    switch(correctAnswer) {
-        case 1:
-            answer1.style.backgroundColor = selectedQuestion.color;
-            selectedQuestion.color == "#000000" ? answer1.style.color = "#FFFFFF" : answer1.style.color = "#000000";
-            break;
-        case 2:
-            answer2.style.backgroundColor = selectedQuestion.color;
-            selectedQuestion.color == "#000000" ? answer2.style.color = "#FFFFFF" : answer2.style.color = "#000000";
-            break;
-        case 3:
-            answer3.style.backgroundColor = selectedQuestion.color;
-            selectedQuestion.color == "#000000" ? answer3.style.color = "#FFFFFF" : answer3.style.color = "#000000";
-            break;
+
+    if (clickedAnswer == correctAnswer) {
+        switch (correctAnswer) {
+            case 1:
+                answer1.style.backgroundColor = selectedQuestion.color;
+                selectedQuestion.color == "#000000" ? answer1.style.color = "#FFFFFF" : answer1.style.color = "#000000";
+                break;
+            case 2:
+                answer2.style.backgroundColor = selectedQuestion.color;
+                selectedQuestion.color == "#000000" ? answer2.style.color = "#FFFFFF" : answer2.style.color = "#000000";
+                break;
+            case 3:
+                answer3.style.backgroundColor = selectedQuestion.color;
+                selectedQuestion.color == "#000000" ? answer3.style.color = "#FFFFFF" : answer3.style.color = "#000000";
+                break;
+        }
+        var millisecondsToWait = 200;
+        setTimeout(function () {
+            if (clickedAnswer == correctAnswer) {
+                alert("You got it!");
+            } else {
+                //alert("Wrong answer, better luck next time!");
+            }
+        }, millisecondsToWait);
+
+        millisecondsToWait = 1000;
+        setTimeout(function () {
+            newQuestion();
+        }, millisecondsToWait);
+    } else {
+        switch(clickedAnswer) {
+            case 1:
+                if (clickedAnswer != correctAnswer) {
+                    answer1.style.backgroundColor = "gray";
+                }
+                break;
+            case 2:
+                if (clickedAnswer != correctAnswer) {
+                    answer2.style.backgroundColor = "gray";
+                }
+                break;
+            case 3:
+                if (clickedAnswer != correctAnswer) {
+                    answer3.style.backgroundColor = "gray";
+                }
+                break;
+        }
     }
 
-    var millisecondsToWait = 200;
-    setTimeout(function() {
-        if(clickedAnswer == correctAnswer) {
-            alert("You got it!");
-        } else {
-            alert("Wrong answer, better luck next time!");
-        }
-    }, millisecondsToWait);
 
-    millisecondsToWait = 1000;
-    setTimeout(function() {
-        newQuestion();
-    }, millisecondsToWait);
+    
+
+    
 }
 
 function clicked(buttonName) {

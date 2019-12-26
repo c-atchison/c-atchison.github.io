@@ -39,9 +39,10 @@ div {
     align-items: stretch;
     flex-wrap: wrap;
     height: 300px;
+    font-size: 30px;
 }
 .answer1 {
-    border: 1px solid rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -50,7 +51,7 @@ div {
     font-weight: bold;
 }
 .answer2 {
-    border: 1px solid rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -59,7 +60,7 @@ div {
     font-weight: bold;
 }
 .answer3 {
-    border: 1px solid rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
     justify-content: center;
     text-align: center;
     align-items: center;
