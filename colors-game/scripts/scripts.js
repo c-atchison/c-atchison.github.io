@@ -3,6 +3,11 @@ var langBox = document.querySelector(".lang_box");
 var answer1 = document.querySelector(".answer1");
 var answer2 = document.querySelector(".answer2");
 var answer3 = document.querySelector(".answer3");
+// Get the modal
+var modal = document.getElementById("myModal");
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
 var Questions = new Array;
 var selectedQuestion;
 var correctAnswer;
@@ -38,12 +43,26 @@ function getQuestions(xml) {
 }
 
 function newQuestion() {
+    //reset colors
     answer1.style.backgroundColor = "white";
     answer2.style.backgroundColor = "white";
     answer3.style.backgroundColor = "white";
     answer1.style.color = "black";
     answer2.style.color = "black";
     answer3.style.color = "black";
+    
+    //question text depends on mode
+    if (mode == "english") {
+        questionFrame.innerHTML = "What color is this?";
+        document.querySelector(".span_label").textContent = "Spanish";
+        document.querySelector(".eng_label").textContent = "English";
+    } else {
+        questionFrame.innerHTML = "¿Que color es este?";
+        document.querySelector(".span_label").textContent = "Español";
+        document.querySelector(".eng_label").textContent = "Inglés";
+    }
+
+    //get random question
     var rand = Math.floor(Math.random() * Questions.length);
     selectedQuestion = Questions[rand];
     //set background color
@@ -55,7 +74,6 @@ function newQuestion() {
     //choose correct answer position
     rand = Math.floor(Math.random() * 3 + 1);
     correctAnswer = rand;
-    console.log(correctAnswer);
     switch(correctAnswer) {
         case 1:
             mode == "english" ? answer1.textContent = selectedQuestion.english : answer1.textContent = selectedQuestion.spanish;
@@ -67,13 +85,16 @@ function newQuestion() {
             mode == "english" ? answer3.textContent = selectedQuestion.english : answer3.textContent = selectedQuestion.spanish;
             break;
     }
+    //fill in other answer spots with wrong answers
     fillOtherAnswers();
 }
 
 function fillOtherAnswers() {
     var count = 0;
+    //for no duplicates
     var prevWrongAnswer = correctAnswer;
     while (count < 2) {
+        //pick random position
         var rand = Math.floor(Math.random() * Questions.length);
         if(Questions[rand] == selectedQuestion) {
             continue;
@@ -85,11 +106,9 @@ function fillOtherAnswers() {
                 }
                 if (count == 0) {
                     mode == "english" ? answer2.textContent = Questions[rand].english : answer2.textContent = Questions[rand].spanish;
-                    console.log("printed to answer2");
                     prevWrongAnswer = rand;
                 } else if (count == 1) {
                     mode == "english" ? answer3.textContent = Questions[rand].english : answer3.textContent = Questions[rand].spanish;
-                    console.log("printed to answer3");
                 }
                 count++;
                 break;
@@ -99,11 +118,9 @@ function fillOtherAnswers() {
                 }
                 if (count == 0) {
                     mode == "english" ? answer1.textContent = Questions[rand].english : answer1.textContent = Questions[rand].spanish;
-                    console.log("printed to answer1");
                     prevWrongAnswer = rand;
                 } else if (count == 1) {
                     mode == "english" ? answer3.textContent = Questions[rand].english : answer3.textContent = Questions[rand].spanish;
-                    console.log("printed to answer3");
                 }
                 count++;
                 break;
@@ -113,11 +130,9 @@ function fillOtherAnswers() {
                 }
                 if (count == 0) {
                     mode == "english" ? answer1.textContent = Questions[rand].english : answer1.textContent = Questions[rand].spanish;
-                    console.log("printed to answer1");
                     prevWrongAnswer = rand;
                 } else if (count == 1) {
                     mode == "english" ? answer2.textContent = Questions[rand].english : answer2.textContent = Questions[rand].spanish;
-                    console.log("printed to answer2");
                 }
                 count++;
                 break;
@@ -147,40 +162,42 @@ function isCorrect(clickedAnswer) {
         var millisecondsToWait = 200;
         setTimeout(function () {
             if (clickedAnswer == correctAnswer) {
-                alert("You got it!");
+                //alert("You got it!");
+                modal.style.display = "block";
             } else {
                 //alert("Wrong answer, better luck next time!");
             }
         }, millisecondsToWait);
 
-        millisecondsToWait = 1000;
-        setTimeout(function () {
-            newQuestion();
-        }, millisecondsToWait);
+        // millisecondsToWait = 1000;
+        // setTimeout(function () {
+        //     newQuestion();
+        // }, millisecondsToWait);
     } else {
         switch(clickedAnswer) {
             case 1:
                 if (clickedAnswer != correctAnswer) {
                     answer1.style.backgroundColor = "gray";
+                    var temp = answer1.textContent;
+                    answer1.innerHTML = "<strike>" + temp + "</strike>";
                 }
                 break;
             case 2:
                 if (clickedAnswer != correctAnswer) {
                     answer2.style.backgroundColor = "gray";
+                    var temp = answer2.textContent;
+                    answer2.innerHTML = "<strike>" + temp + "</strike>";
                 }
                 break;
             case 3:
                 if (clickedAnswer != correctAnswer) {
                     answer3.style.backgroundColor = "gray";
+                    var temp = answer3.textContent;
+                    answer3.innerHTML = "<strike>" + temp + "</strike>";
                 }
                 break;
         }
     }
-
-
-    
-
-    
 }
 
 function clicked(buttonName) {
@@ -196,6 +213,20 @@ function clicked(buttonName) {
             break;
         default:
             alert("Invalid Answer");
+    }
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+    newQuestion();
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        newQuestion();
     }
 }
 
