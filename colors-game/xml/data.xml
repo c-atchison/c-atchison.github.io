@@ -7,7 +7,7 @@
     <question>
         <color>#0000FF</color>
         <english>Blue</english>
-        <spanish>Azule</spanish>
+        <spanish>Azul</spanish>
     </question>
     <question>
         <color>#00FF00</color>
@@ -43,5 +43,15 @@
         <color>#000000</color>
         <english>Black</english>
         <spanish>Negro</spanish>
+    </question>
+    <question>
+        <color>#00FFFF</color>
+        <english>Cyan</english>
+        <spanish>Cian</spanish>
+    </question>
+    <question>
+        <color>#663300</color>
+        <english>Brown</english>
+        <spanish>Marrón</spanish>
     </question>
 </questions>
