@@ -1,4 +1,5 @@
 var questionFrame = document.querySelector(".question");
+var colorSquare = document.querySelector(".color-circle");
 var langBox = document.querySelector(".lang_box");
 var answer1 = document.querySelector(".answer1");
 var answer2 = document.querySelector(".answer2");
@@ -44,20 +45,20 @@ function getQuestions(xml) {
 
 function newQuestion() {
     //reset colors
-    answer1.style.backgroundColor = "white";
-    answer2.style.backgroundColor = "white";
-    answer3.style.backgroundColor = "white";
+    answer1.style.backgroundColor = "transparent";
+    answer2.style.backgroundColor = "transparent";
+    answer3.style.backgroundColor = "transparent";
     answer1.style.color = "black";
     answer2.style.color = "black";
     answer3.style.color = "black";
     
     //question text depends on mode
     if (mode == "english") {
-        questionFrame.innerHTML = "What color is this?";
+        questionFrame.textContent = "What color is this?";
         document.querySelector(".span_label").textContent = "Spanish";
         document.querySelector(".eng_label").textContent = "English";
     } else {
-        questionFrame.innerHTML = "¿Que color es este?";
+        questionFrame.textContent = "¿Que color es este?";
         document.querySelector(".span_label").textContent = "Español";
         document.querySelector(".eng_label").textContent = "Inglés";
     }
@@ -66,10 +67,10 @@ function newQuestion() {
     var rand = Math.floor(Math.random() * Questions.length);
     selectedQuestion = Questions[rand];
     //set background color
-    questionFrame.parentElement.style.backgroundColor = selectedQuestion.color;
+    colorSquare.style.backgroundColor = selectedQuestion.color;
 
     //change text color to white if background is black
-    Questions[rand].color == "#000000" ? questionFrame.style.color = "#FFFFFF" : questionFrame.style.color = "#000000";
+    // Questions[rand].color == "#000000" ? questionFrame.style.color = "#FFFFFF" : questionFrame.style.color = "#000000";
 
     //choose correct answer position
     rand = Math.floor(Math.random() * 3 + 1);

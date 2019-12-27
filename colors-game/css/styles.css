@@ -1,7 +1,16 @@
+body {
+  max-width: 800px;
+  min-width: 610;
+  width: 100%;
+  margin: 0 auto;
+  background: rgb(232, 230, 233);
+  background-image: url("../images/plush-design-studio-l3N9Q27zULw-unsplash.jpg");
+  background-size: 550px 465px;
+  background-repeat: repeat-x;
+}
 header {
     display: flex;
     height: 100px;
-    background-color: blue;
     justify-content: center; /* align horizontal */
     align-items: center; /* align vertical */
     font-size: 30px;
@@ -15,6 +24,15 @@ header {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
+}
+.color-circle {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  margin-left: 10px;
+  background-color: #2196F3;
+  border: 2px solid;
+  border-radius: 100%;
 }
 .switch_div {
     display: flex;
@@ -89,6 +107,7 @@ header {
     display: inline-block;
     width: 60px;
     height: 34px;
+    margin-bottom: 10px;
   }
   
   /* Hide default HTML checkbox */
