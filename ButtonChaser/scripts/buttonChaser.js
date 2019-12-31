@@ -30,6 +30,8 @@
         aHeight -= 74;
         gameTimer.textContent = "Time Left: " + duration;
         resetButton.style.display = "none";
+        dot.style.top = "25px";
+        dot.style.left = "25px";
         //moveDot();
     }
 
