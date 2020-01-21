@@ -144,8 +144,8 @@
         //correct answer
         if (buttonNum == correctAnswerPosition) {
             //set background to green
-            answerArray[buttonNum].style.backgroundColor = "green";
-            answerArray[buttonNum].style.opacity = "1";
+            answerArray[buttonNum].style.backgroundColor = "limegreen";
+            answerArray[buttonNum].style.opacity = ".7";
 
             //show success banner and new button
             banner.style.display = "inline";
@@ -155,7 +155,7 @@
         } else { //incorrect answer
             //set background to red
             answerArray[buttonNum].style.backgroundColor = "gray";
-            answerArray[buttonNum].style.opacity = "1";
+            answerArray[buttonNum].style.opacity = ".7";
             var temp = answerArray[buttonNum].textContent;
             answerArray[buttonNum].innerHTML = "<strike> " + temp + " </strike>";
         }
