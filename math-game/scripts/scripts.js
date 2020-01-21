@@ -9,16 +9,18 @@
     const answer5 = document.querySelector("#answer5");
     const answer6 = document.querySelector("#answer6");
     const addOnlyCheckbox = document.querySelector("#addOnly");
+    const maxOpVal = document.querySelector("#maxOpVal");
+    const footer = document.querySelector(".footer");
     const banner = document.querySelector(".banner");
     const button = document.querySelector(".button");
 
     //store answer positions in array
     var answerArray = [answer1, answer2, answer3, answer4, answer5, answer6];
 
-    //keep track of correct answer value and position
-    //var correctAnswer;
+    //keep track of correct answer position
     var correctAnswerPosition;
     var questionFinished = false;
+    var maxOperandValue = 20;
 
     document.onload = newQuestion();
 
@@ -30,6 +32,7 @@
             answerArray[i].style.color = "black";
             answerArray[i].style.opacity = "0.5";
         }
+        footer.style.display = "none";
         banner.style.display = "none";
         button.style.display = "none";
 
@@ -37,9 +40,6 @@
         let calculation = buildCalculation();
 
         displayQuestion(calculation);
-
-        //perform calculation
-        //correctAnswer = calculation.answer;
 
         //choose correct answer position
         correctAnswerPosition = Math.floor(Math.random() * 6);
@@ -60,19 +60,19 @@
         }
 
         //random operands
-        var left = Math.floor(Math.random() * 12 + 1);
-        var right = Math.floor(Math.random() * 12 + 1);
+        var left = Math.floor(Math.random() * maxOperandValue + 1);
+        var right = Math.floor(Math.random() * maxOperandValue + 1);
 
         //if division, make sure it divides evenly
         if(randOperator == 4) {
             while(left % right != 0) {
-                left = Math.floor(Math.random() * 12 + 1);
-                right = Math.floor(Math.random() * 12 + 1);
+                left = Math.floor(Math.random() * maxOperandValue + 1);
+                right = Math.floor(Math.random() * maxOperandValue + 1);
             }
         }
 
         switch(randOperator) {
-            case 1: return {operator: "+", answer: left + right, left: left, right: right};
+            case 1: return {operator: "+", answer: left + right, left: left,    right: right};
             case 2: if(left >= right) {
                         return {operator: "-", answer: left - right, left: left, right: right};
                     } else {
@@ -94,7 +94,7 @@
             }
         } else {
             questionFrame.textContent = calc.left + " " + calc.operator + " " + calc.right + " = ?";
-}
+        }
     }
 
     function fillOtherAnswers(calc) {
@@ -137,6 +137,14 @@
         }
     }
 
+    function newMaxValue() {
+        maxOperandValue = maxOpVal.value;
+        if(maxOperandValue > 99) {
+            maxOpVal.value = 99;
+        }
+        newQuestion();
+    }
+
     function clicked(buttonNum) {
         if (questionFinished) {
             return; //no clicky after question is finished
@@ -148,12 +156,13 @@
             answerArray[buttonNum].style.opacity = ".7";
 
             //show success banner and new button
+            footer.style.display = "flex";
             banner.style.display = "inline";
             button.style.display = "inline";
             questionFinished = true;
 
         } else { //incorrect answer
-            //set background to red
+            //set background to gray
             answerArray[buttonNum].style.backgroundColor = "gray";
             answerArray[buttonNum].style.opacity = ".7";
             var temp = answerArray[buttonNum].textContent;
@@ -167,5 +176,7 @@
     answer4.addEventListener("click", () => { clicked(3); }, false);
     answer5.addEventListener("click", () => { clicked(4); }, false);
     answer6.addEventListener("click", () => { clicked(5); }, false);
+    addOnlyCheckbox.addEventListener("change", () => { newQuestion(); }, false);
+    maxOpVal.addEventListener("change", () => { newMaxValue(); }, false);
     button.addEventListener("click", () => { newQuestion(); }, false);
 }());

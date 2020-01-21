@@ -23,12 +23,18 @@
         <h3 class="answers" id="answer6">6</h3>
     </section>
 
-    <div>
-        <label for="addOnly">Addition Only</label>
-        <input type="checkbox" id="addOnly" checked="checked"/>
-    </div>
-
-    <footer>
+    <section class="options-section">
+        <div class="addOnly-container">
+            <label for="addOnly">Addition Only</label>
+            <input type="checkbox" id="addOnly" checked="checked"/>
+        </div>
+        <div class="maxOpVal-container">
+            <label for="maxOpVal">Max Operand Value</label>
+            <input type="number" id="maxOpVal" value="20" max="99"/>
+        </div>
+    </section>
+    
+    <footer class="footer">
         <h1 class="banner">Great Job!</h1>
         <button class="button">New Question</button>
     </footer>
