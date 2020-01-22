@@ -18,7 +18,16 @@ header {
     padding-bottom: 0;
     margin: 10px 10px;
     background-color: white;
-    opacity: 0.5;
+    opacity: 0.7;
+}
+#gear {
+    flex: 0 0 auto;
+    width: 2em;
+    height: 2em;
+    font-size: larger;
+    margin-left: auto;
+    margin-right: 20px;
+    vertical-align: center;
 }
 footer {
     display: flex;
@@ -45,6 +54,7 @@ button {
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
+    margin-left: auto;
 }
 .answers-container {
     display: flex;
@@ -65,16 +75,18 @@ button {
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     margin: 10px;
+    background-color: white;
+    opacity: .7;
 }
 .options-section {
-    display: flex;
+    display: none;
     max-width: 800px;
     border: 2px solid;
     margin-left: 10px;
     margin-right: 10px;
     padding: 5px;
     background-color: white;
-    opacity: .5;
+    opacity: .7;
     justify-content: center;
 }
 .addOnly-container {
@@ -110,14 +122,17 @@ input[type=number] {
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
-
-@media (max-width: 725px) {
+@media (max-height: 700px), (max-width: 400px) {
     header {
         height: 50px;
         font-size: 20px;
     }
+    #gear {
+        margin-right: 1px;
+        padding-top: 5px;
+    }
     .answers-container {
-        height: 250px;
+        height: 300px;
     }
     .answers {
         font-size: 30px;
@@ -125,6 +140,35 @@ input[type=number]::-webkit-inner-spin-button {
     }
     .banner {
         font-size: 20px;
+    }
+    label {
+        font-size: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+@media (max-height: 500px) {
+    header {
+        height: 50px;
+        font-size: 20px;
+    }
+    #gear {
+        margin-right: 1px;
+        padding-top: 5px;
+    }
+    .answers-container {
+        height: 170px;
+    }
+    .answers {
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .footer {
+        height: 30px;
+        font-size: 20px;
+    }
+    button {
+        padding: 5px;
     }
     label {
         font-size: 20px;

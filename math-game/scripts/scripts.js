@@ -8,11 +8,13 @@
     const answer4 = document.querySelector("#answer4");
     const answer5 = document.querySelector("#answer5");
     const answer6 = document.querySelector("#answer6");
+    const optionsSection = document.querySelector(".options-section");
     const addOnlyCheckbox = document.querySelector("#addOnly");
     const maxOpVal = document.querySelector("#maxOpVal");
     const footer = document.querySelector(".footer");
     const banner = document.querySelector(".banner");
     const button = document.querySelector(".button");
+    const gear = document.querySelector("#gear");
 
     //store answer positions in array
     var answerArray = [answer1, answer2, answer3, answer4, answer5, answer6];
@@ -20,7 +22,7 @@
     //keep track of correct answer position
     var correctAnswerPosition;
     var questionFinished = false;
-    var maxOperandValue = 20;
+    var maxOperandValue = 12;
 
     document.onload = newQuestion();
 
@@ -30,7 +32,6 @@
         for (let i = 0; i < answerArray.length; i++) {
             answerArray[i].style.backgroundColor = "white";
             answerArray[i].style.color = "black";
-            answerArray[i].style.opacity = "0.5";
         }
         footer.style.display = "none";
         banner.style.display = "none";
@@ -138,10 +139,12 @@
     }
 
     function newMaxValue() {
-        maxOperandValue = maxOpVal.value;
-        if(maxOperandValue > 99) {
+        if(maxOpVal.value > 99) {
             maxOpVal.value = 99;
+        } else if(maxOpVal.value < 10) {
+            maxOpVal.value = 10;
         }
+        maxOperandValue = maxOpVal.value;
         newQuestion();
     }
 
@@ -153,7 +156,6 @@
         if (buttonNum == correctAnswerPosition) {
             //set background to green
             answerArray[buttonNum].style.backgroundColor = "limegreen";
-            answerArray[buttonNum].style.opacity = ".7";
 
             //show success banner and new button
             footer.style.display = "flex";
@@ -164,9 +166,16 @@
         } else { //incorrect answer
             //set background to gray
             answerArray[buttonNum].style.backgroundColor = "gray";
-            answerArray[buttonNum].style.opacity = ".7";
             var temp = answerArray[buttonNum].textContent;
             answerArray[buttonNum].innerHTML = "<strike> " + temp + " </strike>";
+        }
+    }
+
+    function showHideSettings() {
+        if(optionsSection.style.display == "none" || optionsSection.style.display == "") {
+            optionsSection.style.display = "flex";
+        } else {
+            optionsSection.style.display = "none";
         }
     }
 
@@ -179,4 +188,5 @@
     addOnlyCheckbox.addEventListener("change", () => { newQuestion(); }, false);
     maxOpVal.addEventListener("change", () => { newMaxValue(); }, false);
     button.addEventListener("click", () => { newQuestion(); }, false);
+    gear.addEventListener("click", () => { showHideSettings(); }, false);
 }());
