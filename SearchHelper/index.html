@@ -11,9 +11,9 @@
         function NewTabs() {
             var combinedSearchTerms = document.getElementById("searchInput").value.replace(' ', "+");
 
-            var locs = ["https://www.google.com/search?q=" + document.getElementById("searchInput").value + "+expedia.com",
-            "https://www.google.com/search?q=" + document.getElementById("searchInput").value + "+booking.com",
-            "https://www.google.com/search?q=" + document.getElementById("searchInput").value + "+hotels.com"];
+            var locs = ["https://www.google.com/search?q=" + document.getElementById("searchInput").value + "+site:expedia.com",
+            "https://www.google.com/search?q=" + document.getElementById("searchInput").value + "+site:booking.com",
+            "https://www.google.com/search?q=" + document.getElementById("searchInput").value + "+site:hotels.com"];
 
             for (let i = 0; i < locs.length; i++) {
                 window.open(locs[i]);
