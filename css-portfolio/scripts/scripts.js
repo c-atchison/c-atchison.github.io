@@ -2,14 +2,12 @@ const summarySection = document.querySelector(".summary");
 const educationSection = document.querySelector(".education");
 const softwareSection = document.querySelector(".software-experience");
 const employmentSection = document.querySelector(".work-experience");
-const projectsSection = document.querySelector(".projects");
 const contactSection = document.querySelector("#contact");
 
 const homeBtn = document.querySelector("#homeBtn");
 const eduBtn = document.querySelector("#eduBtn");
 const softBtn = document.querySelector("#softBtn");
 const workBtn = document.querySelector("#workBtn");
-const projBtn = document.querySelector("#projBtn");
 const contactsBtn = document.querySelector("#contactsBtn");
 
 function displayPanels(btnName) {
@@ -27,9 +25,6 @@ function displayPanels(btnName) {
             break;
         case 'workBtn':
             scrollToTargetAdjusted(employmentSection);
-            break;
-        case 'projBtn':
-            scrollToTargetAdjusted(projectsSection);
             break;
         default:
             // Back to Top
@@ -49,4 +44,3 @@ homeBtn.addEventListener("click",  () => { displayPanels("homeBtn"); }, false);
 eduBtn.addEventListener("click",  () => { displayPanels("eduBtn"); }, false);
 softBtn.addEventListener("click",  () => { displayPanels("softBtn"); }, false);
 workBtn.addEventListener("click",  () => { displayPanels("workBtn"); }, false);
-projBtn.addEventListener("click",  () => { displayPanels("projBtn"); }, false);
